@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <title>SnapTrade</title>
+    <link rel="stylesheet" href="resources/css/style.css">
+
+    <script src="https://kit.fontawesome.com/4010e4a14f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <header class="header">
+        <span class="header__logo">
+            <h3 class="logo-ecommerce">snapTrade.</h3>
+        </span>
+        <input id="SearchProducts" class="search" type="search" placeholder="Search Product"/>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="#"><i class="fa-solid fa-user"></i></a></li>
+                <li class="nav__item"><a href="#">Pedidos</a></li>
+                <li class="nav__item"><a id="CartOpen" href="javascript:void(0)"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item nav__item--current"><a href="/">Inicio</a></li>
+            <li class="nav__item"><a href="#">Tienda</a></li>
+            <li class="nav__item"><a href="#">Autores</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <div class="card">
+            <div class="card__header card__header--title card__header--purple">
+                <h3>Productos</h3>
+            </div>
+        </div>
+
+        <hr class="separator"/>
+
+        <div id="Products" class="cards"></div>
+
+        <div id="CartBox" class="cart">
+            <div class="cart__header">
+                <div class="row">
+                    <h4>Mi Orden</h4>
+                    <span><a id="CartClose" data-target="#CartBox" href="javascript:void(0)" class="link-close"><i class="fa-regular fa-circle-xmark"></i></a></span>
+                </div>
+                <hr class="cart__division"/>
+            </div>
+            <div id="CartProducts" class="cart__body"></div>
+            <div class="cart__footer">
+                <hr class="cart__division"/>
+                <div class="row">
+                    <h4>Total</h4>
+                    <span id="Total" class="amount amount--dollar">0</span>
+                </div>
+                <input class="btn btn--fill" type="button" value="Checkout">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="resources/js/index.js"></script>
+</body>
+</html>
