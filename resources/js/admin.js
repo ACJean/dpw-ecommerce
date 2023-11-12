@@ -31,17 +31,17 @@ async function fillProductsAdmin(items, idEdit = 0) {
                                         <input name="id" type="hidden" value="${item.id}">
                                         <span class="table-card__column table-card__column--index">${item.id}</span>
                                         <span class="table-card__column">
-                                            <input id="Img" name="img" type="file" accept="image/*" hidden>
+                                            <input id="Img" name="img" type="file" accept="image/*" required="true" hidden>
                                             <label class="image-label" for="Img" id="file-1-preview">
                                                 <img id="ImgForm" class="image image--circle" src="" alt="Seleccionar Imagen" width="64" height="64">
                                             </label>
                                         </span>
                                         <span class="table-card__column">
-                                            <input name="name" class="input" type="text" value="${item.name}" placeholder="Nombre Producto">
+                                            <input name="name" class="input" type="text" value="${item.name}" placeholder="Nombre Producto" required="true" autocomplete="off">
                                         </span>
                                         <span class="table-card__column">
                                             <span class="input--amount">$</span>
-                                            <input name="price" class="input input--amount" type="number" value="${item.price}" min=".00" step=".01" placeholder="Precio">
+                                            <input name="price" class="input input--amount" type="number" value="${item.price}" min=".00" step=".01" placeholder="Precio" required="true" autocomplete="off">
                                         </span>
                                         <span class="table-card__column">
                                             <input class="btn btn--fill btn--success" type="submit" value="Actualizar">
@@ -53,17 +53,17 @@ async function fillProductsAdmin(items, idEdit = 0) {
                                         <input name="id" type="hidden" value="0">
                                         <span class="table-card__column table-card__column--index">-</span>
                                         <span class="table-card__column">
-                                            <input id="Img" name="img" type="file" accept="image/*" hidden>
+                                            <input id="Img" name="img" type="file" accept="image/*" required="true" hidden>
                                             <label class="image-label" for="Img" id="file-1-preview">
-                                                <img id="ImgForm" class="image image--circle" src="resources/images/default.jpg" alt="Seleccionar Imagen" width="64" height="64">
+                                                <img id="ImgForm" class="image image--circle" src="resources/images/default.jpg" alt="Seleccionar Imagen" required="true" width="64" height="64">
                                             </label>
                                         </span>
                                         <span class="table-card__column">
-                                            <input name="name" class="input" type="text" placeholder="Nombre Producto">
+                                            <input name="name" class="input" type="text" placeholder="Nombre Producto" required="true" autocomplete="off">
                                         </span>
                                         <span class="table-card__column">
                                             <span class="input--amount">$</span>
-                                            <input name="price" class="input input--amount" type="number" min=".00" step=".01" placeholder="Precio">
+                                            <input name="price" class="input input--amount" type="number" min=".00" step=".01" placeholder="Precio" required="true" autocomplete="off">
                                         </span>
                                         <span class="table-card__column">
                                             <input class="btn btn--fill btn--success" type="submit" value="Crear">
@@ -113,7 +113,7 @@ async function fillProductsAdmin(items, idEdit = 0) {
             product.name = formData.get('name')
             product.price = +formData.get('price')
         } else {
-            if (id === 0 && products.length === 0) id = 1
+            if (id === 0 && products.length === 0) id = staticProducts[staticProducts.length -1].id + 1
             if (id === 0 && products.length > 0) id = products[products.length - 1].id + 1
             let product = {
                 id : id,
@@ -123,7 +123,7 @@ async function fillProductsAdmin(items, idEdit = 0) {
             }
             products.push(product)
         }
-        localStorage.setItem('Products', JSON.stringify(products))
+        sessionStorage.setItem('Products', JSON.stringify(products))
 
         await fillProductsAdmin(products)
 
@@ -145,7 +145,7 @@ async function fillProductsAdmin(items, idEdit = 0) {
         let id = $(this).data('id')
         let products = getProducts().filter(p => p.id !== id);
 
-        localStorage.setItem('Products', JSON.stringify(products))
+        sessionStorage.setItem('Products', JSON.stringify(products))
 
         await fillProductsAdmin(products, id)
     })

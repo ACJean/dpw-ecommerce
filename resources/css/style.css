@@ -488,6 +488,7 @@ body {
     .table-card__row {
         flex-direction: column;
         row-gap: 16px;
+        padding: 32px 16px;
     }
 
     .table-card__column {

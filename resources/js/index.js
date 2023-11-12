@@ -1,4 +1,4 @@
-const products = [
+const staticProducts = [
     {
         id : 1,
         image : 'resources/images/1.png',
@@ -43,6 +43,7 @@ $(function () {
     $('#CartClose').on('click', function () {
         $($(this).data("target")).removeClass('cart--show')
     })
+    let products = getAllProducts()
     $('#SearchProducts').on('keyup', function() {
         let value = this.value
         let productsFiltered = !value ? products : products.filter(product => product.name.toLowerCase().includes(value.toLowerCase()));
@@ -170,6 +171,7 @@ function addCartProduct(id) {
     let cartProducts = getCartProducts()
     let product = cartProducts.filter(p => p.id === id)[0]
     if (!product) {
+        let products = getAllProducts()
         product = products.filter(p => p.id === id)[0]
         if (!product) return
         product = { ...product }
@@ -221,10 +223,14 @@ function countCartProducts (items) {
 }
 
 function getProducts() {
-    let strProducts = localStorage.getItem('Products')
+    let strProducts = sessionStorage.getItem('Products')
     if (!strProducts) {
         strProducts = JSON.stringify([])
-        localStorage.setItem('Products', strProducts)
+        sessionStorage.setItem('Products', strProducts)
     }
     return JSON.parse(strProducts);
+}
+
+function getAllProducts() {
+    return [...staticProducts, ...getProducts()]
 }
