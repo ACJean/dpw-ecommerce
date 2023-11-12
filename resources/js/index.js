@@ -27,6 +27,10 @@ const products = [
 
 $(function () {
 
+    $(`.nav__item a`).each((index, element) => {
+        if (element.href === location.href) $(element).parent().addClass("nav__item--current")
+    })
+
     if (typeof (Storage) !== 'undefined') {
         console.log('Storage compatible')
     } else {
@@ -59,7 +63,7 @@ function fillProducts(items) {
         let elementProduct = $(`<div class="card card--product">
                                     <div class="card__image">
                                         <img class="image" src="${element.image}" alt="imagen" width="250" height="250">
-                                        <span class="over-content"><a href="javascript:void(0)" class="link-add add-to-cart" data-id="${element.id}"><i class="fa-solid fa-circle-plus"></i></a></span>
+                                        <span class="over-content over-content--right" style="font-size: 30px;"><a href="javascript:void(0)" class="link-add add-to-cart" data-id="${element.id}"><i class="fa-solid fa-circle-plus"></i></a></span>
                                     </div>
                                     <div class="card__body row">
                                         <p class="text">${element.name}</p>
@@ -89,6 +93,7 @@ function fillCartProducts(items) {
         let elementCartProduct = $(`<div class="card card--simple" data-id="${element.id}">
                                         <div class="card__image">
                                             <img class="image" src="${element.image}" alt="imagen" width="50" height="50">
+                                            <span class="over-content over-content--cart-product" style="font-size: 20px;"><a href="javascript:void(0)" class="link-remove remove-to-cart" data-id="${element.id}"><i class="fa-solid fa-circle-minus"></i></a></span>
                                         </div>
                                         <div class="card__body">
                                             <p class="text">${element.name}</p>
@@ -108,6 +113,16 @@ function fillCartProducts(items) {
         element.quantity = +elementRangeQtyProduct.val()
         elementQtyProduct.val(element.quantity)
         elementCartProducts.append(elementCartProduct)
+    })
+
+    $('.remove-to-cart').on('click', function () { 
+        let id = $(this).data('id')
+        let cartProducts = getCartProducts()
+        let newCartProducts = cartProducts.filter(p => p.id !== id)
+
+        fillCartProducts(newCartProducts)
+
+        sessionStorage.setItem('CartProducts', JSON.stringify(newCartProducts))
     })
 
     $('.minus').on('click', function () {
@@ -134,13 +149,15 @@ function fillCartProducts(items) {
 
         let cartProducts = getCartProducts()
         let product = cartProducts.filter(p => p.id === id)[0]
-        product.quantity = this.value
+        product.quantity = +this.value
         sessionStorage.setItem('CartProducts', JSON.stringify(cartProducts))
 
         calculateTotalsCartProducts(cartProducts)
+        countCartProducts(cartProducts)
     })
 
     calculateTotalsCartProducts(items)
+    countCartProducts(items)
 }
 
 function addCartProduct(id) {
@@ -181,4 +198,20 @@ function calculateTotalsCartProducts (items) {
         return accumulator + (currentValue.price * currentValue.quantity)
     }, 0)
     $('#Total').text(total)
+}
+
+function countCartProducts (items) {
+    let qty = items.reduce((accumulator, currentValue) => {        
+        return accumulator + currentValue.quantity
+    }, 0)
+    if (qty === 0) {
+        $('#Qty').hide()
+        return
+    }
+    $('#Qty').show()
+    if (qty > 99) {
+        $('#Qty').text('+99')
+        return
+    }
+    $('#Qty').text(qty)
 }
