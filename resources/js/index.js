@@ -48,6 +48,10 @@ $(function () {
         let productsFiltered = !value ? products : products.filter(product => product.name.toLowerCase().includes(value.toLowerCase()));
         fillProducts(productsFiltered)
     })
+    $('.nav__item--options').on('click', function () {
+        let target = $(this).data('target')
+        $(target).toggle()
+    })
 
     fillProducts(products)
 
@@ -214,4 +218,13 @@ function countCartProducts (items) {
         return
     }
     $('#Qty').text(qty)
+}
+
+function getProducts() {
+    let strProducts = localStorage.getItem('Products')
+    if (!strProducts) {
+        strProducts = JSON.stringify([])
+        localStorage.setItem('Products', strProducts)
+    }
+    return JSON.parse(strProducts);
 }

@@ -12,12 +12,19 @@
     
     <header class="header">
         <span class="header__logo">
-            <h3 class="logo-ecommerce">snapTrade.</h3>
+            <h3 class="logo-ecommerce">snap.Trade</h3>
         </span>
         <input id="SearchProducts" class="search" type="search" placeholder="Buscar Producto"/>
         <nav class="nav">
             <ul class="nav__list">
-                <li class="nav__item"><a href="javascript:void(0)"><i class="fa-solid fa-user"></i></a></li>
+                <li class="nav__item nav__item--options" data-target="#OptionsProfile">
+                    <a href="javascript:void(0)"><i class="fa-solid fa-user"></i></a>
+                    <div id="OptionsProfile" class="nav-options">
+                        <ul class="nav-options__list">
+                            <li class="nav_options__item"><a href="admin.html">Administrar</a></li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="nav__item"><a href="javascript:void(0)">Pedidos</a></li>
                 <li class="nav__item"><a id="CartOpen" href="javascript:void(0)"><i class="fa-solid fa-cart-shopping"><span id="Qty"></span></i></a></li>
             </ul>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <title>SnapTrade</title>
+    <link rel="stylesheet" href="resources/css/style.css">
+
+    <script src="https://kit.fontawesome.com/4010e4a14f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <span class="header__logo">
+            <h3 class="logo-ecommerce">snap.Trade</h3>
+        </span>
+        <input id="SearchProducts" class="search" type="search" placeholder="Buscar Producto" disabled />
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item nav__item--options" data-target="#OptionsProfile">
+                    <a href="javascript:void(0)"><i class="fa-solid fa-user"></i></a>
+                    <div id="OptionsProfile" class="nav-options">
+                        <ul class="nav-options__list">
+                            <li class="nav_options__item"><a href="#">Administrar</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item"><a href="index.html">Inicio</a></li>
+            <li class="nav__item"><a href="#">Tienda</a></li>
+            <li class="nav__item"><a href="autores.html">Autores</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <div class="card">
+            <div class="card__header card__header--title card__header--purple">
+                <h3>Administración de Productos</h3>
+            </div>
+        </div>
+
+        <hr class="separator" />
+
+        <div id="AdminProducts" class="table-card"></div>
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="resources/js/index.js"></script>
+    <script src="resources/js/admin.js"></script>
+</body>
+
+</html>

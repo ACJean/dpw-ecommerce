@@ -17,8 +17,7 @@ body {
     padding: 12px;
     display: grid;
     grid:
-    "logo control actions" auto
-    / auto 1fr auto;
+        "logo control actions" auto / auto 1fr auto;
     justify-content: space-between;
     align-items: center;
 }
@@ -100,11 +99,11 @@ body {
     text-align: center;
 }
 
-.card__header--title h1, 
-.card__header--title h2, 
-.card__header--title h3, 
-.card__header--title h4, 
-.card__header--title h5, 
+.card__header--title h1,
+.card__header--title h2,
+.card__header--title h3,
+.card__header--title h4,
+.card__header--title h5,
 .card__header--title h6 {
     text-transform: uppercase;
 }
@@ -180,6 +179,7 @@ body {
 }
 
 .btn {
+    margin: 2px;
     padding: 4px;
     border: 3px solid #444341;
     text-transform: uppercase;
@@ -198,6 +198,16 @@ body {
 
 .btn--fill {
     width: 100%;
+}
+
+.btn--success {
+    border: 3px solid #8ee38d;
+    color: #8ee38d;
+}
+
+.btn--cancel {
+    border: 3px solid #e38d8d;
+    color: #e38d8d;
 }
 
 .link-add {
@@ -247,7 +257,9 @@ body {
     height: 100%;
 }
 
-.cart__division { width: 100%;}
+.cart__division {
+    width: 100%;
+}
 
 .card--simple {
     column-gap: 8px;
@@ -324,6 +336,130 @@ body {
     right: -12px;
 }
 
+.nav__item--options {
+    position: relative;
+}
+
+.nav__item--options::after {
+    font-family: "Font Awesome 5 Free";
+    content: '\f0d7';
+}
+
+.nav-options {
+    padding: 8px;
+    position: absolute;
+    background-color: #f7f6e4;
+    border: 2px solid #444341;
+    border-radius: 4px;
+    right: 12px;
+    letter-spacing: 1px;
+    display: none;
+}
+
+.nav_options__item {
+    text-transform: none;
+    font-weight: initial;
+}
+
+.nav_options__item a::before {
+    font-family: "Font Awesome 5 Free";
+    content: '\f25a';
+    margin-right: 4px;
+}
+
+.nav-options__list {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+.table-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 16px;
+    padding: 16px 64px;
+}
+
+.table-card__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px 64px;
+    background-color: #FFF;
+    border-radius: 8px;
+}
+
+.table-card .table-card__row:nth-child(odd) {
+    border-left: 4px solid #b59bee;
+}
+
+.table-card .table-card__row:nth-child(even) {
+    border-left: 4px solid #ebc47d;
+}
+
+.table-card__column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 240px;
+    max-width: 240px;
+}
+
+.table-card__column--index {
+    font-size: 25px;
+    min-width: 60px;
+    max-width: 120px;
+    border-right: 1px dotted #444341;
+    padding-right: 64px;
+}
+
+.image--circle {
+    border-radius: 50%;
+    box-shadow:0px 0px 20px 5px rgba(100,100,100,0.1);
+    border: 1px solid rgb(68, 67, 65, 0.5);
+}
+
+.image-label {
+    cursor: pointer;
+}
+
+.input {
+    width: 100%;
+    margin: 4px 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgb(68, 67, 65, 0.5);
+    text-align: center;
+}
+
+.input::placeholder {
+    text-align: center;
+}
+
+.input:focus {
+    outline: 3px solid #cdbfec;
+}
+
+.input--amount {
+    border: 1px solid rgb(68, 67, 65, 0.5);
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+.control {
+    font-size: 18px;
+    margin: 0 18px;
+    color: #444341;
+}
+
+.control--update:hover {
+    color:#ebc47d;
+}
+
+.control--delete:hover {
+    color: #e38d8d;
+}
+
 @media only screen and (max-width: 1620px) {
     .cards {
         grid-template-columns: repeat(3, 1fr);
@@ -351,9 +487,7 @@ body {
 @media only screen and (max-width: 720px) {
     .header {
         grid:
-        "logo actions actions" auto
-        "control control control" 1fr
-        / auto 1fr auto;
+            "logo actions actions" auto "control control control" 1fr / auto 1fr auto;
     }
 
     .header .nav {
