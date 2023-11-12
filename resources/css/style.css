@@ -397,6 +397,10 @@ body {
     border-left: 4px solid #ebc47d;
 }
 
+#FrmProducto {
+    border: none;
+}
+
 .table-card__column {
     display: flex;
     justify-content: center;
@@ -464,11 +468,39 @@ body {
     .cards {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .table-card__column {
+        min-width: 200px;
+        max-width: 200px;
+    }
+
+    .table-card__column--index {
+        min-width: 60px;
+        max-width: 60px;
+    }
 }
 
 @media only screen and (max-width: 1210px) {
     .cards {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .table-card__row {
+        flex-direction: column;
+        row-gap: 16px;
+    }
+
+    .table-card__column {
+        min-width: initial;
+        max-width: initial;
+    }
+
+    .table-card__column--index {
+        min-width: initial;
+        max-width: initial;
+        border: none;
+        border-bottom: 1px dotted #444341;
+        padding: 0
     }
 }
 
